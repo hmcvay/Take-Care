@@ -5,13 +5,15 @@ import {
   Text, 
   View,
 } from 'react-native';
+import 'react-native-get-random-values';
 import Home from './Home';
 import PostList from './PostList';
 import AddPost from './AddPost';
+import {v4 as uuid} from 'uuid';
 import PostDetails from './PostDetails';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import {db} from './../firebase/firebase-config';
+import {db} from './../firebase/firebase-config';
 
 const Stack = createNativeStackNavigator();
 
