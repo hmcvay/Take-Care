@@ -1,4 +1,6 @@
-# Take Care
+<img src="src/assets/titleBanner.png" width="auto" />
+
+<br>
 
 ## By Hayley McVay
 <br>
