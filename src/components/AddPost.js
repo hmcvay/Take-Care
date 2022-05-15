@@ -12,7 +12,7 @@ import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
 import { doc, setDoc, getDocs, Timestamp } from 'firebase/firestore';
 import { CheckBox } from 'react-native-elements';
-import {windowWidth, windowHeight} from '../utils/Dimensions';
+import {windowWidth, windowHeight} from '../utilities/Dimensions';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 
