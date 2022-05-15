@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import { db } from './../firebase/firebase-config';
+import { db } from '../firebase/firebase-config';
 import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
 import { doc, setDoc, getDocs, Timestamp } from 'firebase/firestore';
 import { CheckBox } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import {windowWidth, windowHeight} from '../utils/Dimensions';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 
 const AddPost = ({navigation}) => {
@@ -105,7 +105,7 @@ const AddPost = ({navigation}) => {
           <Text style={{fontSize: 16, width: windowWidth -90, marginTop: 20}}>
             {isUrgentBox
               ? "This ask is urgent!"
-              : "This ask is not urgent"}
+              : "Urgent?"}
           </Text>
         </View>
       </View>
@@ -120,12 +120,12 @@ const AddPost = ({navigation}) => {
             marginRight: 50,
             backgroundColor: "#efeee9",
           }}>
-          <Icon 
-            name="plus"
-            size={35}
-            color="#000000"
-            onPress={() => onPressAddPost()}
-          />
+          <View>
+            <Text>
+              <SimpleLineIcons onPress={() => onPressAddPost()} name='plus' style={{color: 'red', fontSize: 20,}} />
+              
+            </Text> 
+          </View>
         </View>
       </TouchableOpacity>
     </View>
