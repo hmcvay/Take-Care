@@ -42,7 +42,7 @@ const AddPost = ({navigation}) => {
       alert('Please add a Title');
     }
 
-  };
+  };  
   return(
     <View
       style={{
