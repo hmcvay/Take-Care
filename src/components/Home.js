@@ -35,7 +35,7 @@ function Home({navigation}){
             source={Logo}
             style={{width:400, resizeMode: 'contain'}}
           />
-          <Text>Click to enter app</Text>
+          {/* <Text>Click to enter app</Text> */}
 
         </View>
       </TouchableOpacity>
