@@ -12,15 +12,14 @@
   "dependencies": {
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
+    "dotenv": "^16.0.0",
     "firebase": "^9.4.1",
     "react": "17.0.2",
     "react-native": "0.67.2",
     "react-native-elements": "^3.4.2",
-    "react-native-get-random-values": "^1.7.2",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.13.1",
-    "react-native-vector-icons": "^9.1.0",
-    "uuidv4": "^6.2.12"
+    "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

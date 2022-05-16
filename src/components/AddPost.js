@@ -27,7 +27,7 @@ const AddPost = ({navigation}) => {
   const [isUrgentBox, setIsUrgentBox] = useState(false);
 
 
-  const onPressAddPost = async () => {
+  async function sendToFirebase() {
     if (titleInput !== ''){
       await addDoc(collection(db, 'posts'), {
         title: titleInput,
@@ -120,7 +120,7 @@ const AddPost = ({navigation}) => {
           }}>
           <View>
             <Text>
-              <SimpleLineIcons onPress={() => onPressAddPost()} name='plus' style={{color: 'red', fontSize: 20,}} />
+              <SimpleLineIcons onPress={sendToFirebase} name='plus' style={{color: 'red', fontSize: 20,}} />
               
             </Text> 
           </View>
