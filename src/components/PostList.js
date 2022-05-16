@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,9 +6,30 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import { db } from './../firebase/firebase-config';
+import { collection, getDocs, doc, setDoc, Timestamp } from 'firebase/firestore';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 
-function PostList({navigation}){
+function PostList({navigation, route}){
+
+  const [postList, setPostList] = useState({empty: true});
+  const [update, setUpdate] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const {params} = route;
+
+  const getList = async () => {
+    setIsLoading(true);
+    const postCollection = collection(db, 'posts');
+    const postSnapshot = await getDocs(postCollection);
+    const newPostList = postSnapshot.docs.map(p => p.data());
+    newPostList.map(post => {
+      post.time; 
+    });
+    setPostList(newPostList);
+    setIsLoading(false);
+  };
+
   return (
     <SafeAreaView
     style={{

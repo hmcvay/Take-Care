@@ -8,9 +8,9 @@ import {
   TextInput,
 } from 'react-native';
 import { db } from '../firebase/firebase-config';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
-import { doc, setDoc, getDocs, Timestamp } from 'firebase/firestore';
+import { doc, addDoc, getDocs, collection, Timestamp } from 'firebase/firestore';
 import { CheckBox } from 'react-native-elements';
 import {windowWidth, windowHeight} from '../utilities/Dimensions';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -29,13 +29,11 @@ const AddPost = ({navigation}) => {
 
   const onPressAddPost = async () => {
     if (titleInput !== ''){
-      const id = uuid();
-      await setDoc(doc(db, 'posts', id), {
-        id: id,
+      await addDoc(collection(db, 'posts'), {
         title: titleInput,
         description: descriptionInput,
         location: locationInput,
-        time: Timestamp.fromDate(newDate()),
+        time: Timestamp.fromDate(new Date),
         is_urgent: isUrgentBox,
         is_met: false,
       });

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 const Post = ({post, navigation}) => {
-  const {title, description, location, id} = post;
+  const {title, description, location, id, time} = post;
   return(
     <TouchableOpacity
       style={{
