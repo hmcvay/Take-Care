@@ -30,11 +30,11 @@ const AddPost = ({navigation}) => {
   async function sendToFirebase() {
     if (titleInput !== ''){
       try{
-        await addDoc(collection(db, 'post'), {
+        await addDoc(collection(db, 'posts'), {
           title: titleInput,
           description: descriptionInput,
           location: locationInput,
-          time: Timestamp.fromDate(new Date),
+          // time: Timestamp.fromDate(new Date),
           is_urgent: isUrgentBox,
           is_met: false,
         });
