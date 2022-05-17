@@ -26,7 +26,7 @@ const App = () => {
           headerStyle: {
             backgroundColor: '#efeee9',
           },
-          headerTintColor: '#2980ff',
+          headerTintColor: '#ed4b2a',
           headerTitleStyle: {
           },
         }}>
