@@ -29,15 +29,21 @@ const AddPost = ({navigation}) => {
 
   async function sendToFirebase() {
     if (titleInput !== ''){
-      await addDoc(collection(db, 'posts'), {
-        title: titleInput,
-        description: descriptionInput,
-        location: locationInput,
-        time: Timestamp.fromDate(new Date),
-        is_urgent: isUrgentBox,
-        is_met: false,
-      });
-      navigation.navigate('PostList', {updated: true});
+      try{
+        await addDoc(collection(db, 'posts'), {
+          title: titleInput,
+          description: descriptionInput,
+          location: locationInput,
+          time: Timestamp.fromDate(new Date),
+          is_urgent: isUrgentBox,
+          is_met: false,
+        });
+        console.log('yoo')
+        navigation.navigate('PostList', {updated: true});
+      } catch (error){
+        console.log('ERROR:', error);
+      }
+   
     } else {
       alert('Please add a Title');
     }
