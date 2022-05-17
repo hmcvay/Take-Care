@@ -13,6 +13,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
+console.log("HELLLLLLLO", Object.values(process.env));
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
