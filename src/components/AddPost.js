@@ -30,7 +30,7 @@ const AddPost = ({navigation}) => {
   async function sendToFirebase() {
     if (titleInput !== ''){
       try{
-        await addDoc(collection(db, 'posts'), {
+        await addDoc(collection(db, 'post'), {
           title: titleInput,
           description: descriptionInput,
           location: locationInput,
@@ -38,7 +38,6 @@ const AddPost = ({navigation}) => {
           is_urgent: isUrgentBox,
           is_met: false,
         });
-        console.log('yoo')
         navigation.navigate('PostList', {updated: true});
       } catch (error){
         console.log('ERROR:', error);
