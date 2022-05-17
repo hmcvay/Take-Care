@@ -13,11 +13,9 @@ import { db } from './../firebase/firebase-config';
 import { collection, getDocs, doc, addDoc, Timestamp } from 'firebase/firestore';
 import Icon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import { windowHeight, windowWidth } from "../utilities/Dimensions";
-import { Dimensions } from 'react-native';
 
 
 function PostList({navigation, route}){
-
   const [postList, setPostList] = useState({empty: true});
   const [update, setUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,21 +38,37 @@ function PostList({navigation, route}){
 
   const getList = async () => {
     setIsLoading(true);
+    let newPostList = [];
     const postsCollection = collection(db, 'posts');
-    const postSnapshot = await getDocs(postsCollection);
-    const newPostList = postSnapshot.docs.map(p => p.data());
-    newPostList.map(post => {
-      post.time; 
+    const postsSnapshot = await getDocs(postsCollection);
+    postsSnapshot.forEach((doc) => {
+      newPostList.push(doc.data());
     });
+    // const newPostList = postsSnapshot.docs.map(d => d.data());
+    console.log('NEW POSTLIST = ' + newPostList);
+    // newPostList.map(post => {
+    //   post.time; 
+    // });
     setPostList(newPostList);
     setIsLoading(false);
-    const date = new Date();
   };
+
+  useEffect(() => {
+    getList();
+  }, [update]);
+
+  useFocusEffect(() => {
+    () => getList();
+  });
+
+  useEffect(() => {
+    const now = new Date().getTime();
+  }, [isLoading]);
 
   const checkIfLoading = () => {
     if (isLoading === true || postList.empty === true){
       return (
-        <View>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Image 
             source={require('./../assets/takeCareTransparent.png')}
             opacity={0.5}
@@ -71,21 +85,30 @@ function PostList({navigation, route}){
             renderItem={({post}) => <>{postDisplayBlock(post)}</>}
           />
         </View>
-      )
+      );
     }
-  }
+  };
 
-  useEffect(() => {
-    const now = new Date().getTime();
-  }, [isLoading]);
-
-  useFocusEffect(() => {
-    () => getList();
-  }, [update]);
-
-  useEffect(() => {
-    getList();
-  }, [update]);
+  const postDisplayBlock = post => {
+    console.log("THESE ARE POSTS!!!!" + {post})
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('PostDetail', {post})}
+        style = {styles.post}>
+        <View style={styles.postDisplay}>
+          <View style={styles.postBody}>
+            <Text style={styles.postTitle}>{post.title}</Text>
+            <Text style={styles.postLocation}>{post.location}</Text>
+            <Text style={styles.postDescription} numberOfLines={5}>{post.description}</Text>
+          </View>
+          <View>
+            <Text style={styles.postUrgent}>
+              {post.is_urgent ? `this post is urgent!` : ``}
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <View style={styles.pageLayout}>
