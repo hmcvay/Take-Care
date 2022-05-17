@@ -16,7 +16,9 @@ import { windowHeight, windowWidth } from "../utilities/Dimensions";
 
 
 function PostList({navigation, route}){
-  const [postList, setPostList] = useState({empty: true});
+  const [postList, setPostList] = useState([]);
+  const postCollectionReference = collection(db, "posts");
+
   const [update, setUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const {params} = route;
@@ -44,11 +46,8 @@ function PostList({navigation, route}){
     postsSnapshot.forEach((doc) => {
       newPostList.push(doc.data());
     });
-    // const newPostList = postsSnapshot.docs.map(d => d.data());
     console.log('NEW POSTLIST = ' + newPostList);
-    // newPostList.map(post => {
-    //   post.time; 
-    // });
+   
     setPostList(newPostList);
     setIsLoading(false);
   };
