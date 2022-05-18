@@ -86,6 +86,8 @@ function PostList({navigation}){
   //   );
   // };
 
+  // -----------------------------------------------
+
   return (
     <View style={styles.pageLayout}>
      {/* {checkIfLoading()} */}
