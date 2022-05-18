@@ -5,16 +5,13 @@ import {firebase} from 'firebase/app';
 
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID
+  apiKey: "AIzaSyDqXOkgl09Lv2kImcTO6qiDZ7tid772F1o",
+  authDomain: "take-care-43765.firebaseapp.com",
+  projectId: "take-care-43765",
+  storageBucket: "take-care-43765.appspot.com",
+  messagingSenderId: "759449956631",
+  appId: "1:759449956631:web:348ca7602e72a2d10a0752"
 };
-console.log("HELLLLLLLO", Object.values(process.env));
-
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 

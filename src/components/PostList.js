@@ -10,24 +10,39 @@ import {
 } from 'react-native';
 import { useFocusEffect } from "@react-navigation/native";
 import { db } from './../firebase/firebase-config';
-import { collection, getDocs, doc, Timestamp } from 'firebase/firestore';
+import { collection, getDocs, doc, Timestamp, DocumentData } from 'firebase/firestore';
 import Icon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import { windowHeight, windowWidth } from "../utilities/Dimensions";
 
 
 function PostList({navigation, route}){
 
-  async function fetch(){
-    let array = [];
-    const querySnapshot = await getDocs(collection(db, "posts"));
-    querySnapshot.forEach((doc) => {
-      array.push(doc.data());
-      console.log(doc.data());
-    });
+  const [postList, setPostList] = useState({empty: true});
+  const [update, setUpdate] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function getData(){
+    setIsLoading(true);
+    // let array = [];
+    const postCollection = collection(db, "posts");
+    const postSnapshot = await getDocs(postCollection);
+    const newPostList = postSnapshot.docs.map(d => d.data());
+
+    // postSnapshot.forEach((doc) => {
+    //   array.push(doc.data());
+    //   console.log(doc.data());
+    // });
+    // setPostList(newPostList);
+    setPostList(newPostList);
+    setIsLoading(false);
+    // console.log('ARRAYYYYY!!!!!' + array);
+  };
+
+  useEffect(() => {
+    getData();
+  }, [update]);
   
-  }
-  
-  fetch();
+  // getData();
  
   
   // const [postList, setPostList] = useState({empty: true});
@@ -71,59 +86,59 @@ function PostList({navigation, route}){
   //   () => getList();
   // });
 
-  // useEffect(() => {
-  //   const now = new Date().getTime();
-  //   console.log('isLoading = ' + ' ' + now);
-  // }, [isLoading]);
+  useEffect(() => {
+    const now = new Date().getTime();
+    console.log('isLoading = ' + ' ' + now);
+  }, [isLoading]);
 
-  // const checkIfLoading = () => {
-  //   if (isLoading === true || postList.empty === true){
-  //     return (
-  //       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-  //         <Image 
-  //           source={require('./../assets/takeCareTransparent.png')}
-  //           opacity={0.5}
-  //           style={{width: 200, height: 200}}
-  //         />
-  //       </View>
-  //     );
-  //   } else {
-  //     return (
-  //       <View style={{height: windowHeight - 200}}>
-  //         {messageDisplay()}
-  //         <FlatList 
-  //           data={postList}
-  //           renderItem={({post}) => <>{postDisplayBlock(post)}</>}
-  //         />
-  //       </View>
-  //     );
-  //   }
-  // };
+  const checkIfLoading = () => {
+    if (isLoading === true || postList.empty === true){
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Image 
+            source={require('./../assets/takeCareTransparent.png')}
+            opacity={0.5}
+            style={{width: 200, height: 200}}
+          />
+        </View>
+      );
+    } else {
+      return (
+        <View style={{height: windowHeight - 200}}>
+          {/* {messageDisplay()} */}
+          <FlatList 
+            data={postList}
+            renderItem={({post}) => <>{postDisplayBlock(post)}</>}
+          />
+        </View>
+      );
+    }
+  };
 
-  // const postDisplayBlock = post => {
-  //   // console.log("THESE ARE POSTS!!!!" + {post})
-  //   return (
-  //     <TouchableOpacity onPress={() => navigation.navigate('PostDetail', {post})}
-  //       style = {styles.post}>
-  //       <View style={styles.postDisplay}>
-  //         <View style={styles.postBody}>
-  //           <Text style={styles.postTitle}>{post.title}</Text>
-  //           <Text style={styles.postLocation}>{post.location}</Text>
-  //           <Text style={styles.postDescription} numberOfLines={5}>{post.description}</Text>
-  //         </View>
-  //         <View>
-  //           <Text style={styles.postUrgent}>
-  //             {post.is_urgent ? `this post is urgent!` : ``}
-  //           </Text>
-  //         </View>
-  //       </View>
-  //     </TouchableOpacity>
-  //   );
-  // };
+  const postDisplayBlock = post => {
+    console.log("THESE ARE POSTS!!!!" + {post})
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('PostDetail', {post})}
+        style = {styles.post}>
+        <View style={styles.postDisplay}>
+          <View style={styles.postBody}>
+            <Text style={styles.postTitle}>{post.title}</Text>
+            <Text style={styles.postLocation}>{post.location}</Text>
+            <Text style={styles.postDescription} numberOfLines={5}>{post.description}</Text>
+          </View>
+          <View>
+            <Text style={styles.postUrgent}>
+              {post.is_urgent ? `this post is urgent!` : ``}
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <View style={styles.pageLayout}>
-      {/* {checkIfLoading()} */}
+      {checkIfLoading()}
       <View>
         <TouchableOpacity>
           <View style={styles.buttons}>
