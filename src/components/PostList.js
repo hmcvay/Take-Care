@@ -10,26 +10,49 @@ import {
 } from 'react-native';
 import { useFocusEffect } from "@react-navigation/native";
 import { db } from './../firebase/firebase-config';
-import { collection, getDocs, doc, Timestamp, DocumentData } from 'firebase/firestore';
+import { collection, getDocs, doc, Timestamp } from 'firebase/firestore';
 import Icon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import { windowHeight, windowWidth } from "../utilities/Dimensions";
 import { posts } from './../seed/data';
 import { fonts } from "react-native-elements/dist/config";
+import PostCard from './PostCard';
 
 function PostList({navigation}){
 
-  // const [postList, setPostList] = useState({empty: true});
-  // const [update, setUpdate] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  // ----------------------------------------
 
-  // async function getData(){
-  //   setIsLoading(true);
-  //   const postCollection = collection(db, 'posts');
-  //   const postSnapshot = await getDocs(postCollection);
-  //   const newPostList = postSnapshot.docs.map(d => d.data());
-  //   setPostList(newPostList);
-  //   setIsLoading(false);
-  // };
+  const [posts, setPosts] = useState({empty: true});
+  // const [update, setUpdate] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect( () => {
+      async function getData(){
+        const list=[];
+        setIsLoading(true);
+        const querySnapshot = await getDocs(collection(db, "posts"));
+        querySnapshot.forEach(doc => {
+          const {title, description, location } = doc.data();
+          list.push({
+            title,
+            description,
+            location
+          });
+        })
+        setPosts(list);
+        setIsLoading(false);
+      };
+      getData();
+    }
+  );
+
+  return (
+    <FlatList 
+      data={posts}
+      renderItem={({item}) => <PostCard item={item} />}
+      keyExtractor={item=>item.id}
+    />
+    
+  );
 
   // useEffect(() => {
   //   getData();
@@ -86,53 +109,53 @@ function PostList({navigation}){
   //   );
   // };
 
-  // -----------------------------------------------
+  // ---------------------STATIC DATA--------------------------
 
-  return (
-    <View style={styles.pageLayout}>
-     {/* {checkIfLoading()} */}
-      <View style={styles.post}>
-        <Text style={styles.postTitle}>NEED BOOTS</Text>
-        <Text style={styles.postLocation}>sullivan's gulch: holladay and 25th</Text>
-        <Text style={styles.postDescription}>Mutual PDX is collecting as many pairs of durable, warm, new, or gently used boots as possible for our unhoused neighbors! We will be out collecting donations until late evening May 15, down on the stretch of Holladay between 23rd and 28th</Text>
-        <View style={styles.postButtons}>
-          <Icon
-            style={{fontSize: 25, paddingRight: 20 }}
-            name="paper-clip"
-          />
-          <Icon
-            style={{fontSize: 25}} 
-            name="heart"
-          />
-        </View>
-      </View>
-      <View>
-        <TouchableOpacity>
-          <View style={styles.buttons}>
-            <Icon 
-              style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
-              name="list"
-              onPress={() => navigation.navigate('PostList')}
-            />
-            <Icon
-              style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
-              name="pencil"
-              onPress={() => navigation.navigate('AddPost')}
-            />
-            <Icon
-              style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
-              name="paper-clip"
-            />
-            <Icon 
-              style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
-              name="emotsmile"
-              onPress={() => navigation.navigate('Home')}
-            />
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
-  )
+  // return (
+  //   <View style={styles.pageLayout}>
+  //    {/* {checkIfLoading()} */}
+  //     <View style={styles.post}>
+  //       <Text style={styles.postTitle}>NEED BOOTS</Text>
+  //       <Text style={styles.postLocation}>sullivan's gulch: holladay and 25th</Text>
+  //       <Text style={styles.postDescription}>Mutual PDX is collecting as many pairs of durable, warm, new, or gently used boots as possible for our unhoused neighbors! We will be out collecting donations until late evening May 15, down on the stretch of Holladay between 23rd and 28th</Text>
+  //       <View style={styles.postButtons}>
+  //         <Icon
+  //           style={{fontSize: 25, paddingRight: 20 }}
+  //           name="paper-clip"
+  //         />
+  //         <Icon
+  //           style={{fontSize: 25}} 
+  //           name="heart"
+  //         />
+  //       </View>
+  //     </View>
+      // <View>
+      //   <TouchableOpacity>
+      //     <View style={styles.buttons}>
+      //       <Icon 
+      //         style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
+      //         name="list"
+      //         onPress={() => navigation.navigate('PostList')}
+      //       />
+      //       <Icon
+      //         style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
+      //         name="pencil"
+      //         onPress={() => navigation.navigate('AddPost')}
+      //       />
+      //       <Icon
+      //         style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
+      //         name="paper-clip"
+      //       />
+      //       <Icon 
+      //         style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
+      //         name="emotsmile"
+      //         onPress={() => navigation.navigate('Home')}
+      //       />
+      //     </View>
+      //   </TouchableOpacity>
+      // </View>
+  //   </View>
+  // )
 };
 
 export default PostList;
