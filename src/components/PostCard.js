@@ -7,12 +7,13 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
-function PostCard({item, navigation}){
+function PostCard({item}){
   return (
     <View style={styles.pageLayout}>
       <View style={styles.post}>
-        <Text style={styles.postTitle} onPress={() => navigation.navigate('PostDetails')}>{item.title}</Text>
+        <Text style={styles.postTitle}>{item.title}</Text>
         <Text style={styles.postLocation}>{item.location}</Text>
         <Text style={styles.postDescription}>{item.description}</Text>
         <View style={styles.postButtons}>
