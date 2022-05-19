@@ -11,12 +11,18 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 function PostCard({item}){
   return (
-    <View style={styles.pageLayout}>
+    // <View style={styles.pageLayout}>
       <View style={styles.post}>
         {/* <Text style={styles.postUser}></Text> */}
-        <Text style={styles.postTitle}>{item.title.toUpperCase()}</Text>
-        <Text style={styles.postLocation}>{item.location}</Text>
-        <Text style={styles.postDescription}>{item.description}</Text>
+        <View>
+          <Text style={styles.postTitle}>{item.title.toUpperCase()}</Text>
+        </View> 
+        <View>
+          <Text style={styles.postLocation}>{item.location}</Text>
+        </View>
+        <View>
+          <Text style={styles.postDescription}>{item.description}</Text>
+        </View>
         <View style={styles.postButtons}>
           <Icon
             style={{fontSize: 25, paddingRight: 20 }}
@@ -28,7 +34,7 @@ function PostCard({item}){
           />
         </View>
       </View>
-    </View>  
+    // </View>  
   )
 };
 
@@ -41,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     // padding: 1,
     backgroundColor: '#efeee9',
+    alignContent: 'center',
   },
 
   buttons:{
@@ -55,18 +62,18 @@ const styles = StyleSheet.create({
   },
 
   post:{
-    flex: 2,
+    flex: 1,
+    flexDirection: 'column',
+    // alignItems: 'center',
     height: 300,
     borderColor: 'black',
-    // borderLeftColor: 'black',
-    // borderRightColor: 'black',
     borderWidth: 1,
-    // borderLeftWidth: 1,
-    // borderRightWidth: 1,
+    justifyContent: 'center',
 
   },
 
   postTitle:{
+    
     textAlign: 'center',
     fontSize: 28,
     fontWeight: 'bold',
@@ -75,6 +82,7 @@ const styles = StyleSheet.create({
   },
 
   postLocation: {
+    
     textAlign: 'center',
     fontSize: 14,
     marginBottom: 10,
@@ -82,6 +90,7 @@ const styles = StyleSheet.create({
   },
 
   postDescription:{
+    
     textAlign: 'center',
     fontSize: 19,
     marginTop: 10,
@@ -91,7 +100,7 @@ const styles = StyleSheet.create({
   },
 
   postButtons: {
-    flex: 1,
+    
     flexDirection: 'row',
     justifyContent: 'flex-start',
     marginLeft: 25,
