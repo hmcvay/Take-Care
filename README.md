@@ -116,8 +116,11 @@ _started this new repo due to git auto initializing another git upon `create-rea
 * 11:00am: BUGFIX!!! New method and new FlatList render work!! Firebase data is displaying in a feed view!!!
 * 11:30 - 12:30: update README and work on capstone presentation materials.
 * 12:30-1:30pm: LUNCH
--------
+---
 * 2:45-3:45pm: WIP styling now that all data is rendering.
+* 3:45-5:00pm: Create app icon image in photoshop and add to project.
+---
+* 7:00pm - 9:00pm: WIP applying universal styling across app
 
 
 
