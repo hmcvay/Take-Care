@@ -115,6 +115,9 @@ _started this new repo due to git auto initializing another git upon `create-rea
 * 9:00am: one last attempt at displaying firestore data - writing a new async method and try to store object differently to render to FlatList component.
 * 11:00am: BUGFIX!!! New method and new FlatList render work!! Firebase data is displaying in a feed view!!!
 * 11:30 - 12:30: update README and work on capstone presentation materials.
+* 12:30-1:30pm: LUNCH
+-------
+* 2:45-3:45pm: WIP styling now that all data is rendering.
 
 
 

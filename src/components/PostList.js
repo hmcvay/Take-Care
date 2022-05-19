@@ -46,11 +46,38 @@ function PostList({navigation}){
   );
 
   return (
-    <FlatList 
-      data={posts}
-      renderItem={({item}) => <PostCard item={item} />}
-      keyExtractor={item=>item.id}
-    />
+    <View style={styles.pageLayout}>
+      <FlatList 
+        data={posts}
+        renderItem={({item}) => <PostCard item={item} />}
+        keyExtractor={item=>item.id}
+      />
+      <View>
+        <TouchableOpacity>
+          <View style={styles.buttons}>
+            <Icon 
+              style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
+              name="list"
+              onPress={() => navigation.navigate('PostList')}
+            />
+            <Icon
+              style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
+              name="pencil"
+              onPress={() => navigation.navigate('AddPost')}
+            />
+            <Icon
+              style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
+              name="paper-clip"
+            />
+            <Icon 
+              style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
+              name="emotsmile"
+              onPress={() => navigation.navigate('Home')}
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
     
   );
 
