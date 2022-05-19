@@ -9,6 +9,7 @@ import {
 import Home from './Home';
 import PostList from './PostList';
 import AddPost from './AddPost';
+import PostWatching from './PostWatching';
 // import {v4 as uuid} from 'uuid';
 import PostDetails from './PostDetails';
 import { NavigationContainer } from '@react-navigation/native';
@@ -58,6 +59,10 @@ const App = () => {
         <Stack.Screen 
           name="PostDetails"
           component={PostDetails}
+        />
+        <Stack.Screen 
+          name="PostWatching"
+          component={PostWatching}
         />
       </Stack.Navigator>
     </NavigationContainer>
