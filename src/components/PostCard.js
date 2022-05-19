@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 function PostCard({item}){
+  
   return (
     // <View style={styles.pageLayout}>
       <View style={styles.post}>
@@ -29,6 +30,7 @@ function PostCard({item}){
             name="eye"
           />
           <Icon
+            // onPress = {(heartColor)}
             style={{fontSize: 25}} 
             name="heart"
           />

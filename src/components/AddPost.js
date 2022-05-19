@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { doc, addDoc, getDocs, collection, Timestamp } from 'firebase/firestore';
 import { CheckBox } from 'react-native-elements';
 import {windowWidth, windowHeight} from '../utilities/Dimensions';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 
 const AddPost = ({navigation}) => {
@@ -49,62 +49,68 @@ const AddPost = ({navigation}) => {
 
   };  
   return(
+  
     <View style={styles.pageLayout}>
       <View style={styles.addPostWrapper}>
-        <TextInput
-          style={styles.addTitle} 
-          placeholder="Title"
-          onChangeText={onChangeTitle}
-          maxLength={100}
-          autoCapitalize="words"
-        />
-        <TextInput style={styles.addLocation}
-          placeholder="Portland, Oregon"
-          onChangeText={onChangeLocation}
-          maxLength={60}
-          autoCapitalize="words"
-        />
-        <TextInput 
-          style={styles.addDescription}
-          placeholder="Description"
-          onChangeText={onChangeDescription}
-          maxLength={300}
-          autoCapitalize="sentences"
-          multiline={true}
-          numberOfLines={10}
-        />
-        <View style={styles.urgentBox}>
-          <CheckBox
-            // style={styles.urgentBox}
-            checked={isUrgentBox}
-            onPress={() => setIsUrgentBox(!isUrgentBox)}
+        <View style={styles.border}>
+          <TextInput
+            style={styles.addTitle} 
+            placeholder="Title"
+            onChangeText={onChangeTitle}
+            maxLength={100}
+            autoCapitalize="words"
           />
-          <Text style={{fontSize: 16, width: windowWidth -90, marginTop: 20}}>
-            {isUrgentBox
-              ? "This post is urgent!"
-              : "Urgent?"}
-          </Text>
-        </View>
-      </View>
-      <TouchableOpacity>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: 35,
-            marginLeft: 50,
-            marginRight: 50,
-            backgroundColor: "#efeee9",
-          }}>
-          <View>
-            <Text>
-              <SimpleLineIcons onPress={sendToFirebase} name='plus' style={{color: 'black', fontSize: 20,}} />
-              
-            </Text> 
+          <TextInput style={styles.addLocation}
+            placeholder="Portland, Oregon"
+            onChangeText={onChangeLocation}
+            maxLength={60}
+            autoCapitalize="words"
+          />
+          <TextInput 
+            style={styles.addDescription}
+            placeholder="Description"
+            onChangeText={onChangeDescription}
+            maxLength={300}
+            autoCapitalize="sentences"
+            multiline={true}
+            numberOfLines={10}
+          />
+          <View style={styles.urgentBox}>
+            <CheckBox
+              // style={styles.urgentBox}
+              checked={isUrgentBox}
+              onPress={() => setIsUrgentBox(!isUrgentBox)}
+            />
+            <Text style={{fontSize: 16, width: windowWidth -90, marginTop: 20}}>
+              {isUrgentBox
+                ? "This post is urgent!"
+                : "Urgent?"}
+            </Text>
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
+    
+      <View>
+        <TouchableOpacity>
+          <View style={styles.buttons} >
+            <Icon 
+              style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
+              name="list"
+              onPress={() => navigation.navigate('PostList')}
+            />
+            <Icon
+              style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
+              name="plus"
+              onPress={sendToFirebase}
+            />
+            <Icon 
+              style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
+              name="emotsmile"
+              onPress={() => navigation.navigate('Home')}
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -127,13 +133,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#efeee9',
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    height: windowHeight - 175,
+    width: windowWidth - 7,
+  },
+
+  border: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: 'black',
-    height: 300,
-    width: windowWidth - 15,
+    borderStyle: 'dashed',
+    height: 350,
+    width: windowWidth - 20,
   },
 
   addTitle: {
+    // fontFamily: "PlayfairDisplaySC-Bold",
     height: 50,
     padding: 10,
     fontSize: 26,
@@ -158,5 +176,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     // alignItems: 'center',
+  },
+
+  buttons:{
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginBottom: 15,
+    height: 60,
+    // borderTopWidth: 1,
+    // borderTopColor: 'black',
+    width: windowWidth - 6,
   }
 })
