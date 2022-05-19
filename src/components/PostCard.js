@@ -13,7 +13,8 @@ function PostCard({item}){
   return (
     <View style={styles.pageLayout}>
       <View style={styles.post}>
-        <Text style={styles.postTitle}>{item.title}</Text>
+        {/* <Text style={styles.postUser}></Text> */}
+        <Text style={styles.postTitle}>{item.title.toUpperCase()}</Text>
         <Text style={styles.postLocation}>{item.location}</Text>
         <Text style={styles.postDescription}>{item.description}</Text>
         <View style={styles.postButtons}>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    padding: 3,
+    // padding: 1,
     backgroundColor: '#efeee9',
   },
 
@@ -57,7 +58,12 @@ const styles = StyleSheet.create({
     flex: 2,
     height: 300,
     borderColor: 'black',
+    // borderLeftColor: 'black',
+    // borderRightColor: 'black',
     borderWidth: 1,
+    // borderLeftWidth: 1,
+    // borderRightWidth: 1,
+
   },
 
   postTitle:{

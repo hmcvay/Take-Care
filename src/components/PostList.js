@@ -19,8 +19,6 @@ import PostCard from './PostCard';
 
 function PostList({navigation}){
 
-  // ----------------------------------------
-
   const [posts, setPosts] = useState({empty: true});
   // const [update, setUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +52,7 @@ function PostList({navigation}){
       />
       <View>
         <TouchableOpacity>
-          <View style={styles.buttons}>
+          <View style={styles.buttons} >
             <Icon 
               style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
               name="list"
@@ -194,17 +192,18 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     padding: 3,
     backgroundColor: '#efeee9',
+    width: windowWidth,
   },
 
   buttons:{
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     marginBottom: 15,
-    marginLeft: 40,
-    marginRight: 40,
-    height: 80,
-    
+    height: 60,
+    borderTopWidth: 1,
+    borderTopColor: 'black',
+    width: windowWidth - 6,
   },
 
   post:{
