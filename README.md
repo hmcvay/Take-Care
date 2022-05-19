@@ -1,4 +1,5 @@
 <img src="src/assets/titleBanner.png" width="auto" />
+<img src="src/assets/homePage.png" height=400 />
 
 <br>
 
@@ -14,7 +15,12 @@
 * React
 * React Native
 * Javascript
-* HTML
+* npm
+* Babel
+* Firebase/Firestore
+* React Native Vector Icons
+* React Navigation
+
 
 
 <br>
@@ -31,17 +37,29 @@ At this point in time, it is simply a digital bulletin board: a place to display
 
 ## Setup/Installation Requirements
 
-// TO BE WRITTEN LATER AFTER CODING BEGINS //
+* React Native v^ 0.67.2
+* Watchman
+* Xcode
+* Xcode Simulator (ios)
+
+### Setup Steps
+* Follow React Native Documentation for iOS using the 'React Native CLI Quickstart' tab
+* Clone this repository
+* From the root directory run `npm install` to install necessary dependencies and packages
+* Run `cd ios`, then, `pod install` to install CocoaPods for ios
+* Navigate back to root directory with `cd ..`
+* Build project using `npx react-native run-ios`
 
 <br>
 
 ## Known Bugs
 
-* None so far
+* currently there is not full CRUD 
+* Auth is not yet enabled
 
 <br>
 
-## Planning & Progress Log
+## Planning & Progress Log -- 61.5 hours
 
 <br>
 
@@ -86,6 +104,7 @@ _started this new repo due to git auto initializing another git upon `create-rea
 
 ### Sunday, 5/15/22 (4 hours)
 
+* 10:00-12:00pm - create logo in photoshop
 * 12:45 - 4:45: BEGIN WORK IN _THIS_ NEW REPO (had to start new again because I needed to completely re-initialize the app with React-Native CLI instead of the last repo which was Expo CLI) Start work on adding async post method to firebase, and inputting some static/filler data.
 
 <br>
@@ -110,7 +129,7 @@ _started this new repo due to git auto initializing another git upon `create-rea
 
 <br>
 
-### Wednesday, 5/18/22 ()
+### Wednesday, 5/18/22 (10 hours)
 
 * 9:00am: one last attempt at displaying firestore data - writing a new async method and try to store object differently to render to FlatList component.
 * 11:00am: BUGFIX!!! New method and new FlatList render work!! Firebase data is displaying in a feed view!!!
@@ -121,6 +140,14 @@ _started this new repo due to git auto initializing another git upon `create-rea
 * 3:45-5:00pm: Create app icon image in photoshop and add to project.
 ---
 * 7:00pm - 9:00pm: WIP applying universal styling across app
+
+<br>
+
+### Thursday, 5/19/22 (2 hours)
+
+* 7:00-9:00am: Continue with applying style across entire app.
+
+
 
 
 
