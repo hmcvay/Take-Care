@@ -26,7 +26,7 @@ function PostCard({item}){
         <View style={styles.postButtons}>
           <Icon
             style={{fontSize: 25, paddingRight: 20 }}
-            name="paper-clip"
+            name="eye"
           />
           <Icon
             style={{fontSize: 25}} 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     // alignItems: 'center',
-    height: 300,
+    height: 320,
     borderColor: 'black',
     borderWidth: 1,
     justifyContent: 'center',
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   postDescription:{
     
     textAlign: 'center',
-    fontSize: 19,
+    fontSize: 17,
     marginTop: 10,
     marginBottom: 15,
     marginLeft: 12,
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     marginLeft: 25,
     marginTop: 10,
+    marginBottom: 10,
   }
 
 });

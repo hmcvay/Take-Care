@@ -62,19 +62,19 @@ const AddPost = ({navigation}) => {
           <TextInput 
             placeholder="Title"
             onChangeText={onChangeTitle}
-            maxLength={50}
+            maxLength={100}
             autoCapitalize="words"
           />
           <TextInput 
             placeholder="Description"
             onChangeText={onChangeDescription}
-            maxLength={150}
+            maxLength={300}
             autoCapitalize="sentences"
           />
           <TextInput 
             placeholder="Portland, Oregon"
             onChangeText={onChangeLocation}
-            maxLength={30}
+            maxLength={60}
             autoCapitalize="words"
           />
         </View>

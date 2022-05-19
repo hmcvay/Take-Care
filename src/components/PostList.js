@@ -65,7 +65,7 @@ function PostList({navigation}){
             />
             <Icon
               style={{color: '#ed4b2a', fontSize:30, bottom: 2}}
-              name="paper-clip"
+              name="eye"
             />
             <Icon 
               style={{color: '#ed4b2a', fontSize: 30, bottom: 2}}
