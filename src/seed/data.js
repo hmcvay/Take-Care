@@ -33,7 +33,7 @@ export const posts = [
     title: 'Giving Children\'s Clothes',
     location: 'NE pdx - 42nd & Going',
     time: 'May 17, 2022 9:54:22 AM',
-    description: 'Have two boxes of children\'s clothes sizes 2T - 14 curbside off NE Going Street and 42nd.',
+    description: 'Have two boxes of children\'s clothes sizes 2T - 14 curbside off NE Going Street and 42nd. Will keep it out until end of day 5/18 or it\'s gone whichever comes first.',
     is_met: false,
     is_urgent: ''
   },
@@ -42,7 +42,7 @@ export const posts = [
     title: 'Looking for working Lawnmower',
     location: 'SE Foster/Powell',
     time: 'May 18, 2022 3:12:52 PM',
-    description: 'Trying to get my elderly neighbor a working mower so I can help with the lawn. We are at Foster/Powell NW corner near Kern Park yellow house on 67th.',
+    description: 'Trying to get my elderly neighbor a working mower so I can help with the lawn. We are at Foster/Powell NW corner near Kern Park: the yellow house on 67th.',
     is_met: false,
     is_urgent: ''
   },
